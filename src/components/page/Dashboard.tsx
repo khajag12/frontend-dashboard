@@ -21,12 +21,12 @@ const Dashboard = () => {
       : dashboardDataYearly;
   return (
     <main>
-      <div className="my-6 flex space-x-4 justify-center">
+      <div className="my-6 flex space-x-3 sm:space-x-4 justify-center">
         {["monthly", "quarterly", "yearly"].map((p) => (
           <button
             key={p}
             onClick={() => setPeriod(p as "monthly" | "quarterly" | "yearly")}
-            className={`px-4 py-2 rounded ${
+            className={`px-3 sm:px-4 py-2 rounded text-xs sm:text-sm md:text-base ${
               period === p
                 ? "bg-[var(--color-bright)] text-[var(--color-darkgray)] font-bold"
                 : "bg-[var(--color-darkgray)] text-[var(--color-lightbg)]"
