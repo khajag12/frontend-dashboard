@@ -1,5 +1,13 @@
+interface ActualDataItem {
+  value: number[];
+}
+
+interface Field {
+  name: string;
+  actualData?: ActualDataItem[];
+}
 interface Props {
-  field: any;
+  field: Field;
   view: "monthly" | "quarterly" | "yearly";
   labels: string[];
 }

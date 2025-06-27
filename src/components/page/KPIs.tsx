@@ -45,7 +45,7 @@ export default function KPIs({ topKPIs, KPIs }: KPIsProps) {
       <div>
         <h2 className="text-xl font-bold mb-4 text-[#262626]">Top KPIs</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {topKPIs.map(({ name, value, date, mOm, mom, prefix, type }, idx) => (
+          {topKPIs.map(({ name, value, date, mOm, mom, prefix }, idx) => (
             <div
               key={idx}
               className="p-4 bg-[#262626] text-[#FBFAFA] rounded-lg flex flex-col"

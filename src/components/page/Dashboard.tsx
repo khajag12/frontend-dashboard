@@ -1,9 +1,10 @@
 "use client";
 import ExpensesSplit from "@/components/page/ExpensesSplit";
 import CashAtBank from "./CashAtBank";
-import dashboardDataMonthly from "../../data/monthly.json";
-import dashboardDataQuarterly from "../../data/quarterly.json";
-import dashboardDataYearly from "../../data/yearly.json";
+import type { DashboardData } from "../../commonInterfaces";
+import dashboardDataMonthly from "../../data/monthly.json" assert { type: "json" };
+import dashboardDataQuarterly from "../../data/quarterly.json" assert { type: "json" };
+import dashboardDataYearly from "../../data/yearly.json" assert { type: "json" };
 import Revenue from "@/components/page/Revenue";
 import PNL from "@/components/page/PNL";
 import KPIs from "@/components/page/KPIs";
@@ -15,10 +16,10 @@ const Dashboard = () => {
   );
   const dashboardData =
     period === "monthly"
-      ? dashboardDataMonthly
+      ? (dashboardDataMonthly as DashboardData)
       : period === "quarterly"
-      ? dashboardDataQuarterly
-      : dashboardDataYearly;
+      ? (dashboardDataQuarterly as DashboardData)
+      : (dashboardDataYearly as DashboardData);
   return (
     <main>
       <div className="my-6 flex space-x-3 sm:space-x-4 justify-center">

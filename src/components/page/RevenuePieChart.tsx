@@ -2,6 +2,7 @@
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import type { TooltipItem } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -37,7 +38,7 @@ export default function RevenuePieChart({ data }: RevenuePieChartProps) {
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => {
+          label: (context: TooltipItem<"pie">) => {
             return `${context.label}: ${context.parsed}`;
           },
         },

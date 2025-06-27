@@ -2,8 +2,22 @@
 import { useState } from "react";
 import ReportField from "./ReportField";
 
+interface ActualDataItem {
+  value: number[];
+}
+
+interface Field {
+  name: string;
+  actualData?: ActualDataItem[];
+}
+
+interface Section {
+  name: string;
+  fields?: Field[];
+}
+
 interface Props {
-  section: any;
+  section: Section;
   view: "monthly" | "quarterly" | "yearly";
   labels: string[];
 }
@@ -23,7 +37,7 @@ export default function ReportSection({ section, view, labels }: Props) {
 
       {expanded && (
         <div className="mt-3 pl-4 space-y-2">
-          {section.fields?.map((field: any, i: number) => (
+          {section.fields?.map((field, i) => (
             <ReportField key={i} field={field} view={view} labels={labels} />
           ))}
         </div>

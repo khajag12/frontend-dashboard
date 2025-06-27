@@ -1,5 +1,6 @@
 "use client";
 
+import { ChartDataItem } from "@/commonInterfaces";
 import {
   Chart as ChartJS,
   LineElement,
@@ -20,7 +21,15 @@ ChartJS.register(
   Legend
 );
 
-export default function CashAtBankChart({ dateArray, dataSet }: any) {
+interface CashAtBankProps {
+  dateArray: string[];
+  dataSet: ChartDataItem[];
+}
+
+export default function CashAtBankChart({
+  dateArray,
+  dataSet,
+}: CashAtBankProps) {
   const chartData = {
     labels: dateArray,
     datasets: dataSet.map((item: any) => ({
