@@ -16,13 +16,17 @@ interface Section {
   fields?: Field[];
 }
 
-interface Props {
+interface ReportSectionProps {
   section: Section;
   view: "monthly" | "quarterly" | "yearly";
   labels: string[];
 }
 
-export default function ReportSection({ section, view, labels }: Props) {
+export default function ReportSection({
+  section,
+  view,
+  labels,
+}: ReportSectionProps) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -35,13 +39,15 @@ export default function ReportSection({ section, view, labels }: Props) {
         <span>{expanded ? "−" : "+"}</span>
       </div>
 
-      {expanded && (
-        <div className="mt-3 pl-4 space-y-2">
-          {section.fields?.map((field, i) => (
-            <ReportField key={i} field={field} view={view} labels={labels} />
-          ))}
-        </div>
-      )}
+      <div
+        className={`mt-3 pl-4 space-y-2 overflow-hidden transition-[max-height] duration-500 ease-in-out ${
+          expanded ? "max-h-[1000px]" : "max-h-0"
+        }`}
+      >
+        {section.fields?.map((field, i) => (
+          <ReportField key={i} field={field} view={view} labels={labels} />
+        ))}
+      </div>
     </div>
   );
 }
