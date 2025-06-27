@@ -1,9 +1,10 @@
 interface Props {
   field: any;
   view: "monthly" | "quarterly" | "yearly";
+  labels: string[];
 }
 
-export default function ReportField({ field, view }: Props) {
+export default function ReportField({ field, view, labels }: Props) {
   const values = field?.actualData?.[0]?.value;
 
   if (!Array.isArray(values) || values.length === 0) {
@@ -18,19 +19,15 @@ export default function ReportField({ field, view }: Props) {
   // Chunk values based on view
   const chunkSize = view === "monthly" ? 1 : view === "quarterly" ? 3 : 12;
   const grouped: number[] = [];
+  const groupLabels: string[] = [];
 
   for (let i = 0; i < values.length; i += chunkSize) {
     const groupSum = values.slice(i, i + chunkSize).reduce((a, b) => a + b, 0);
     grouped.push(groupSum);
+    groupLabels.push(
+      labels[Math.floor(i / chunkSize)] || `Period ${i / chunkSize + 1}`
+    );
   }
-
-  // Label helpers
-  const getLabel = (i: number) => {
-    if (view === "monthly") return `Month ${i + 1}`;
-    if (view === "quarterly") return `Q${i + 1}`;
-    if (view === "yearly") return `Year ${i + 1}`;
-    return `Period ${i + 1}`;
-  };
 
   return (
     <div className="py-2 border-b">
@@ -43,7 +40,7 @@ export default function ReportField({ field, view }: Props) {
               val < 0 ? "text-red-600" : ""
             }`}
           >
-            <span>{getLabel(i)}</span>
+            <span>{groupLabels[i]}</span>
             <span className="font-mono">{val.toFixed(2)}</span>
           </div>
         ))}

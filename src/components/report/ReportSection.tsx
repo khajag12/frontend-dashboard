@@ -1,12 +1,14 @@
+"use client";
 import { useState } from "react";
 import ReportField from "./ReportField";
 
 interface Props {
   section: any;
   view: "monthly" | "quarterly" | "yearly";
+  labels: string[];
 }
 
-export default function ReportSection({ section, view }: Props) {
+export default function ReportSection({ section, view, labels }: Props) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -22,7 +24,7 @@ export default function ReportSection({ section, view }: Props) {
       {expanded && (
         <div className="mt-3 pl-4 space-y-2">
           {section.fields?.map((field: any, i: number) => (
-            <ReportField key={i} field={field} view={view} />
+            <ReportField key={i} field={field} view={view} labels={labels} />
           ))}
         </div>
       )}
