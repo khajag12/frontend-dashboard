@@ -32,7 +32,7 @@ export default function CashAtBankChart({
 }: CashAtBankProps) {
   const chartData = {
     labels: dateArray,
-    datasets: dataSet.map((item: any) => ({
+    datasets: dataSet.map((item: ChartDataItem) => ({
       label: item.name,
       data: item.values,
       fill: false,
@@ -62,7 +62,7 @@ export default function CashAtBankChart({
 }
 
 function getColor(name: string) {
-  const map: any = {
+  const map: Record<string, string> = {
     Cash: "#698AC5",
     Checking: "#EAE62F",
     Savings: "#B09280",
