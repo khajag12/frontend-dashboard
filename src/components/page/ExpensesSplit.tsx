@@ -9,7 +9,7 @@ interface ExpenseDonutChartProps {
 
 const ExpensesSplit = ({ data }: ExpenseDonutChartProps) => {
   return (
-    <div className="max-w-[400px] mx-auto">
+    <div className="max-w-[300px] mx-auto">
       <h2 className="text-2xl font-bold text-[var(--color-darkgray)]">
         Expenses
       </h2>

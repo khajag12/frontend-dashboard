@@ -37,7 +37,7 @@ const Dashboard = () => {
           </button>
         ))}
       </div>
-      <div className="px-4 py-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="px-4 py-4 lg:grid lg:grid-cols-2 gap-4">
         <CashAtBank
           dataSet={dashboardData.mainDashboard.charts.cashAtBank}
           dateArray={dashboardData.mainDashboard.dateArray}

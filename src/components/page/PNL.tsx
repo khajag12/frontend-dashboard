@@ -10,7 +10,7 @@ interface ProfitLossOverviewChartProps {
 }
 const PNL = ({ dateArray, dataSet }: ProfitLossOverviewChartProps) => {
   return (
-    <div className="space-y-8 max-w-[400px] mx-auto">
+    <div className="space-y-8 max-w-[300px] mx-auto">
       <h2 className="text-2xl font-bold text-[var(--color-darkgray)]">
         Expenses
       </h2>

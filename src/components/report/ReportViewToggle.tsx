@@ -7,14 +7,14 @@ export default function ReportViewToggle({ view, setView }: Props) {
   const views = ["monthly", "quarterly", "yearly"] as const;
 
   return (
-    <div className="mb-6 flex gap-3">
+    <div className="my-6 flex space-x-3 sm:space-x-4 justify-center">
       {views.map((v) => (
         <button
           key={v}
           onClick={() => setView(v)}
-          className={`px-4 py-2 rounded font-semibold ${
+          className={`px-3 sm:px-4 py-2 rounded text-xs sm:text-sm md:text-base ${
             view === v
-              ? "bg-[var(--color-bright)] text-[var(--color-darkgray)]"
+              ? "bg-[var(--color-bright)] text-[var(--color-darkgray)] font-bold"
               : "bg-[var(--color-darkgray)] text-[var(--color-lightbg)]"
           }`}
         >
