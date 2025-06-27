@@ -38,7 +38,7 @@ export default function ReportField({ field, view, labels }: Props) {
   }
 
   return (
-    <div className="py-2 border-b">
+    <div className="py-2 border-b max-h-[400px] overflow-y-auto">
       <div className="font-semibold mb-1">{field.name}</div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm">
         {grouped.map((val, i) => (

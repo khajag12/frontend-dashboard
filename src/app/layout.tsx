@@ -19,7 +19,7 @@ export default function RootLayout({
         <div>
           <Sidebar />
         </div>
-        <div className="w-full h-screen overflow-auto">{children}</div>
+        <div className="w-full h-screen overflow-auto pl-16">{children}</div>
       </body>
     </html>
   );

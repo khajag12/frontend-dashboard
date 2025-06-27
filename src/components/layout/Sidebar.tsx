@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const links = [
     { href: "/", label: "Dashboard" },
@@ -14,24 +14,25 @@ export default function Sidebar() {
   ];
 
   return (
-    <section className="relative">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="absolute top-5 right-5 z-50"
-      >
-        <Image
-          src={isOpen ? "/icons/close.png" : "/icons/menu.png"}
-          alt="Toggle Menu"
-          width={20}
-          height={20}
-        />
-      </button>
-
+    <section>
       <aside
-        className={`${
-          isOpen ? "w-64" : "w-16"
-        } bg-[var(--color-darkgray)] text-[var(--color-lightbg)] min-h-screen p-4 transition-all duration-300 ease-in-out`}
+        className={`fixed top-0 left-0 min-h-screen bg-[var(--color-darkgray)] text-[var(--color-lightbg)] p-4 transition-all duration-300 ease-in-out z-50
+          ${isOpen ? "w-64" : "w-16"}
+        `}
       >
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="absolute top-5 right-5 z-50"
+          aria-label="Toggle Menu"
+        >
+          <Image
+            src={isOpen ? "/icons/close.png" : "/icons/menu.png"}
+            alt="Toggle Menu"
+            width={20}
+            height={20}
+          />
+        </button>
+
         <h1
           className={`text-2xl font-bold text-[var(--color-bright)] mb-6 transition-opacity duration-300 ${
             isOpen ? "opacity-100" : "opacity-0"
